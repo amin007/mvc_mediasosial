@@ -16,17 +16,29 @@ class Index extends \Aplikasi\Kitab\Kawal
 	public function index()
 	{
 		# Set pemboleubah utama
-		$this->papar->tajuk = namaClass($this);
+		$this->papar->tajukAtas = 'mini social network';//namaClass($this);
+		$this->papar->linkCss = URL . 'sumber/rangka-dawai/massive';
+		$this->papar->linkJs = URL . 'sumber/rangka-dawai/massive';
 		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan($this->_folder,'index',$noInclude=0);
+		$this->paparKandungan2($this->_folder,'index',$noInclude=0);
 	}
 ##------------------------------------------------------------------------------------------
 	public function paparKandungan($folder, $fail, $noInclude)
 	{	# Pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/' . $fail, $jenis, $noInclude); # $noInclude=0
+			//'mobile/mobile',$jenis,0); # $noInclude=0
+		//*/
+	}
+##------------------------------------------------------------------------------------------
+public function paparKandungan2($folder, $fail, $noInclude)
+	{	# Pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=6);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/' . $fail, $jenis, $noInclude); # $noInclude=0
@@ -61,16 +73,34 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #==========================================================================================
-	function login($user)
+	function login($user = null)
 	{
 		# Set pemboleubah utama
-		$this->papar->nama = $user; # dapatkan nama pengguna
-		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
-		$fail = array('login','login_automatik');
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '$user = ' . $user . '';
+		$this->papar->tajukAtas = 'mini social network';//namaClass($this);
+		$this->papar->linkCss = URL . 'sumber/rangka-dawai/massive';
+		$this->papar->linkJs = URL . 'sumber/rangka-dawai/massive';
 
 		# Pergi papar kandungan
+		$fail = array('login','login_automatik');
 		//$this->semakPembolehubah(); # Semak data dulu
-		$this->paparKandungan($this->_folder,$fail[0],$noInclude=0); # $noInclude=0
+		$this->paparKandungan2($this->_folder,$fail[0],$noInclude=0); # $noInclude=0//*/
+	}
+#------------------------------------------------------------------------------------------
+	function register()
+	{
+		# Set pemboleubah utama
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
+		//echo '$user = ' . $user . '';
+		$this->papar->tajukAtas = 'mini social network';//namaClass($this);
+		$this->papar->linkCss = URL . 'sumber/rangka-dawai/massive';
+		$this->papar->linkJs = URL . 'sumber/rangka-dawai/massive';
+
+		# Pergi papar kandungan
+		$fail = array('register','login_automatik');
+		//$this->semakPembolehubah(); # Semak data dulu
+		$this->paparKandungan2($this->_folder,$fail[0],$noInclude=0); # $noInclude=0//*/
 	}
 #------------------------------------------------------------------------------------------
 	function login_automatik($user)
