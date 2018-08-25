@@ -122,6 +122,12 @@ class Papar
 	{
 		switch ($template)
 		{
+			case 7: $jenis = 'profile';
+			break;
+			
+			case 6: $jenis = 'massive';
+			break;
+			
 			case 5: $jenis = 'miminium';
 			break;
 
