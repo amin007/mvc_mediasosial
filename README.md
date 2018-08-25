@@ -1,5 +1,5 @@
-#mini social network
-projek ini tentang mini social network.
+#mini-social-network
+Projek ini tentang mini social network.
 
 
 #konsep-asal
