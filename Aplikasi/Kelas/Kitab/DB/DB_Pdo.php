@@ -117,13 +117,14 @@ class DB_Pdo extends \PDO
 	 */
 	public function insert($table, $data)
 	{
+		echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		ksort($data);
 
 		$fieldNames = implode('`, `', array_keys($data));
 		$fieldValues = ':' . implode(', :', array_keys($data));
 
-		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
-		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
+		echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
+		/*$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
 
 		foreach ($data as $key => $value) {
 			$sth->bindValue(":$key", $value);
@@ -146,13 +147,14 @@ class DB_Pdo extends \PDO
 	 */
 	public function insertAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		/*foreach ($array as $key => $value) 
+		foreach ($array as $key => $value)
 		{
-			//$sth->bindValue("$key", $value);
-			echo "<br>\$sth->bindValue(\"$key\", $value) ";
-		}//*/
+			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
+			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
+		}	//echo '<hr>';
 
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
@@ -173,8 +175,9 @@ class DB_Pdo extends \PDO
 	 */
 	public function insertAllNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
+		//echo '<hr>Nama class :' . __METHOD__ . '<hr>';
 		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
-		//echo '<hr><pre>array::'; print_r($array); echo '</pre><hr>';
+		echo '<hr><pre>array::'; print_r($array); echo '</pre><hr>';
 		
 		$sth = $this->prepare($sql);
 		foreach ($array as $key => $value) 
@@ -185,9 +188,9 @@ class DB_Pdo extends \PDO
 
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
-		//$sth->debugDumpParams(); # papar sql balik
-		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah); echo '</pre>';
-		if (strpos($masalah[2], 'Unknown column') !== false) 
+		$sth->debugDumpParams(); # papar sql balik
+		echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah); echo '</pre>';
+		/*if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
 		//*/
 	}
