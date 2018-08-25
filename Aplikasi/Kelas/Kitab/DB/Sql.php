@@ -339,7 +339,7 @@ class Sql
 		//echo '<pre>$data->'; print_r($data); echo '</pre>';
 
 		# set sql
-		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql  = "INSERT INTO `$myTable`\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
 		return $sql;
