@@ -1,1 +1,1 @@
-<h1>Ini fail utama</h1>
+<h1 class="text-center">Ini fail utama</h1>
