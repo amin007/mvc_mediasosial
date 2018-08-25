@@ -138,11 +138,12 @@ class Tanya
 		return $sql;
 	}
 	#---------------------------------------------------------------------------------------------
-	public function tambahBanyakNilai($myTable, $medan, $data)
+	public function tambahBanyakNilai($myTable, $medan, $medan2, $data)
 	{
 		$sql = $this->sql->arahanValues($myTable, $medan, $data);
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
-		$this->db->insertAll($sql);
+		$this->db->insertAll($sql,$data);
+		//$this->db->insert($myTable,$medan2);
 	}
 	#---------------------------------------------------------------------------------------------
 	public function tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $data)
