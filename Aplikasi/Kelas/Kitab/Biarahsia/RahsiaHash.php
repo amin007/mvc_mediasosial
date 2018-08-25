@@ -29,7 +29,8 @@ class RahsiaHash
 	{
 		if (function_exists('password_hash')) 
 		{# php >= 5.5
-			$cincang = password_hash($data, $numAlgo, $arrOptions);
+			//$cincang = password_hash($data, $numAlgo, $arrOptions);
+			$cincang = password_hash($data,PASSWORD_DEFAULT );
 		}
 		else
 		{
