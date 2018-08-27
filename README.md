@@ -1,8 +1,8 @@
-#mini-social-network
+# mini-social-network
 Projek ini tentang mini social network.
 
+# konsep-asal
 
-#konsep-asal
 Tujuan guna verb (kata kerja) hanya pendek kata. Jadikan 5 huruf bagi setiap konsep mvc. 
 Asalnya cuba hendak terjemahkan konsep mvc semudah mungkin dalam bahasa melayu. 
 Mungkin akan dibaiki jika jumpa perkataan sesuai.
